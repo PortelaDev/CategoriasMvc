@@ -8,7 +8,7 @@ namespace CategoriasMvc.Services;
 public class ProdutoService : IProdutoService
 {
     private readonly IHttpClientFactory _clientFactory;
-    private const string apiEndPoint = "/api/1/produtos/";
+    private const string apiEndpoint = "/api/1/produtos/";
     private readonly JsonSerializerOptions _options;
     private ProdutoViewModel produtoVM;
     private IEnumerable<ProdutoViewModel> produtosVM;
@@ -24,7 +24,7 @@ public class ProdutoService : IProdutoService
         var client = _clientFactory.CreateClient("ProdutosApi");
         PutTokenInHeaderAuthorization(token, client);
 
-        using(var response = await client.GetAsync(apiEndPoint))
+        using(var response = await client.GetAsync(apiEndpoint))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -45,7 +45,7 @@ public class ProdutoService : IProdutoService
         var client = _clientFactory.CreateClient("ProdutosApi");
         PutTokenInHeaderAuthorization(token, client);
 
-        using (var response = await client.GetAsync(apiEndPoint + id))
+        using (var response = await client.GetAsync(apiEndpoint + id))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -68,7 +68,7 @@ public class ProdutoService : IProdutoService
         var produto = JsonSerializer.Serialize(produtoVM);
         StringContent content = new StringContent(produto, Encoding.UTF8, "application/json");
 
-        using (var response = await client.PostAsync(apiEndPoint, content))
+        using (var response = await client.PostAsync(apiEndpoint, content))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -88,7 +88,7 @@ public class ProdutoService : IProdutoService
         var client = _clientFactory.CreateClient("ProdutosApi");
         PutTokenInHeaderAuthorization(token, client);
 
-        using (var response = await client.PutAsJsonAsync(apiEndPoint + id, produtoVM))
+        using (var response = await client.PutAsJsonAsync(apiEndpoint + id, produtoVM))
         {
             if (response.IsSuccessStatusCode)
             {
@@ -106,7 +106,7 @@ public class ProdutoService : IProdutoService
         var client = _clientFactory.CreateClient("ProdutosApi");
         PutTokenInHeaderAuthorization(token, client);
 
-        using (var response = await client.DeleteAsync(apiEndPoint + id))
+        using (var response = await client.DeleteAsync(apiEndpoint + id))
         {
             if (response.IsSuccessStatusCode)
             {

@@ -24,6 +24,7 @@ builder.Services.AddHttpClient("ProdutosApi", c =>
 });
 
 builder.Services.AddScoped<ICategoriaServices, CategoriaService>();
+builder.Services.AddScoped<IProdutoService,ProdutoService>();
 builder.Services.AddScoped<IAutenticacao, Autenticacao>();
 
 
